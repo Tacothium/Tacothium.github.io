@@ -1,5 +1,4 @@
 // Your web app's Firebase configuration
-// Your web app's Firebase configuration
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPYybt1-bo4cNjk2n93TnVJD0RkUV1cgw",
@@ -21,24 +20,24 @@ function register() {
   // Get all our input fields
   email = document.getElementById("email").value;
   password = document.getElementById("password").value;
-  full_name = document.getElementById("full_name").value;
-  favourite_song = document.getElementById("favourite_song").value;
-  milk_before_cereal = document.getElementById("milk_before_cereal").value;
+  //name = document.getElementById("name").value;
+  //favourite_song = document.getElementById("favourite_song").value;
+  //milk_before_cereal = document.getElementById("milk_before_cereal").value;
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    alert("Email or password is not formatted correctly");
     return;
     // Don't continue running the code
   }
-  if (
+  /*if (
     validate_field(full_name) == false ||
     validate_field(favourite_song) == false ||
     validate_field(milk_before_cereal) == false
   ) {
     alert("One or More Extra Fields is Outta Line!!");
     return;
-  }
+  }*/
 
   // Move on with Auth
   auth
@@ -53,9 +52,6 @@ function register() {
       // Create User data
       var user_data = {
         email: email,
-        full_name: full_name,
-        favourite_song: favourite_song,
-        milk_before_cereal: milk_before_cereal,
         last_login: Date.now(),
       };
 
@@ -63,7 +59,7 @@ function register() {
       database_ref.child("users/" + user.uid).set(user_data);
 
       // DOne
-      alert("User Created!!");
+      alert("User created successfully");
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
@@ -82,7 +78,7 @@ function login() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert("Email or Password is Outta Line!!");
+    alert("Email or password is incorrect");
     return;
     // Don't continue running the code
   }
@@ -104,8 +100,11 @@ function login() {
       // Push to Firebase Database
       database_ref.child("users/" + user.uid).update(user_data);
 
-      // DOne
-      alert("User Logged In!!");
+      // Done
+      alert("User logged in");
+
+      // Redirect users to the finance dashboard
+      window.location.href = "/Subpages/expense_input.html";
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
@@ -130,7 +129,7 @@ function validate_email(email) {
 
 function validate_password(password) {
   // Firebase only accepts lengths greater than 6
-  if (password < 6) {
+  if (password <= 6) {
     return false;
   } else {
     return true;
