@@ -128,8 +128,8 @@ function validate_email(email) {
 }
 
 function validate_password(password) {
-  // Firebase only accepts lengths greater than 6
-  if (password <= 6) {
+  // Firebase only accepts lengths greater than 6 and less than 26
+  if (password <= 6 || password > 25) {
     return false;
   } else {
     return true;
