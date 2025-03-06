@@ -1,12 +1,12 @@
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDPYybt1-bo4cNjk2n93TnVJD0RkUV1cgw",
-  authDomain: "test-login-page-6487c.firebaseapp.com",
-  projectId: "test-login-page-6487c",
-  storageBucket: "test-login-page-6487c.firebasestorage.app",
-  messagingSenderId: "998941333585",
-  appId: "1:998941333585:web:34704ab63e7fb8fdc7c070",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
@@ -20,9 +20,6 @@ function register() {
   // Get all our input fields
   email = document.getElementById("email").value;
   password = document.getElementById("password").value;
-  //name = document.getElementById("name").value;
-  //favourite_song = document.getElementById("favourite_song").value;
-  //milk_before_cereal = document.getElementById("milk_before_cereal").value;
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
@@ -30,14 +27,6 @@ function register() {
     return;
     // Don't continue running the code
   }
-  /*if (
-    validate_field(full_name) == false ||
-    validate_field(favourite_song) == false ||
-    validate_field(milk_before_cereal) == false
-  ) {
-    alert("One or More Extra Fields is Outta Line!!");
-    return;
-  }*/
 
   // Move on with Auth
   auth
