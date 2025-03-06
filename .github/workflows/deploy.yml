@@ -34,3 +34,4 @@ jobs:
         with:
           branch: gh-pages
           folder: .  # Change this if your static files are in a different folder
+          clean: true
